@@ -27,5 +27,3 @@ Modifica o elimina únicamente objetos que lleven tu identificador.
 - No actives políticas que puedan bloquear a los administradores.
 - No conserves secretos ni claves descargadas al terminar.
 - Documenta cualquier paso que no puedas ejecutar por falta de licencia o permisos.
-
-Las respuestas se mantienen en la rama `soluciones`.
