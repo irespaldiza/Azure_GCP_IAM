@@ -2,53 +2,24 @@
 
 ## Ejercicio 1. Roles equivalentes
 
-Define los perfiles `Auditor`, `Operador` y `Administrador` y mapea su acceso en Azure y Google Cloud.
+Completa:
 
-### Entrega
+| Perfil | Azure: rol y alcance | Google Cloud: rol y alcance | Revisión | Evidencia |
+|---|---|---|---|---|
+| Auditor |  |  |  |  |
+| Operador |  |  |  |  |
+| Administrador |  |  |  |  |
 
-Completa esta matriz:
+**Entrega:** matriz y justificación de los privilegios sensibles.
 
-| Perfil | Necesidad | Azure: rol y alcance | Google Cloud: rol y alcance | Temporal o revisable | Evidencia |
-|---|---|---|---|---|---|
-| Auditor |  |  |  |  |  |
-| Operador |  |  |  |  |  |
-| Administrador |  |  |  |  |  |
+## Ejercicio 2. Acceso entre proveedores
 
-Marca los privilegios sensibles y justifica cualquier rol amplio.
+Resuelve tres escenarios: usuario Entra → Google Cloud, workload Azure → Google Cloud y workload Google Cloud → Azure.
 
-## Ejercicio 2. Autorización entre proveedores
+**Entrega:** una fila por escenario en una matriz `principal / mecanismo / destino / rol local / alcance / evidencia / revocación`. Evita secretos estáticos.
 
-Analiza estos escenarios:
+## Ejercicio 3. Plan de gobierno
 
-1. Usuario corporativo autenticado en Entra ID que accede a Google Cloud.
-2. Workload de Azure que accede a Google Cloud.
-3. Workload de Google Cloud que accede a Azure.
+Define altas, bajas, cambios, propietarios de grupos y workloads, secretos, acceso temporal, revisiones, evidencias y revocación.
 
-### Entrega
-
-Completa una fila por escenario:
-
-| Principal de origen | Mecanismo | Destino | Rol local | Alcance | Evidencia | Revocación |
-|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |
-
-Incluye una decisión de mínimo privilegio y una medida para evitar secretos estáticos en cada escenario.
-
-## Ejercicio 3. Plan de gobierno IAM
-
-Redacta un plan de una página que defina:
-
-- Altas, bajas y cambios de acceso.
-- Propietario y propósito de cada grupo.
-- Reglas para identidades de workload.
-- Uso, almacenamiento, rotación y eliminación de secretos.
-- Acceso privilegiado y temporal.
-- Revisión mensual o trimestral.
-- Evidencias que deben conservarse.
-- Procedimiento de revocación.
-
-### Entrega
-
-- Plan de gobierno de una página.
-- Checklist de revisión periódica.
-- Responsables de aprobar, ejecutar y revisar los accesos.
+**Entrega:** plan de una página y checklist mensual o trimestral.

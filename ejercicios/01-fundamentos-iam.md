@@ -2,34 +2,13 @@
 
 ## Ejercicio 1. Conceptos IAM
 
-Define cada concepto en una frase e indica su papel en IAM:
+Define en una frase: usuario, grupo, ID token, access token, rol, permiso, aplicación, service account, MFA, recurso, política, tenant y proyecto.
 
-- Usuario
-- Grupo
-- ID token
-- Access token
-- Rol
-- Permiso
-- Aplicación
-- Service account
-- MFA
-- Recurso
-- Política
-- Tenant
-- Proyecto
+**Entrega:** tabla `concepto / definición` y un ejemplo de login correcto con acceso denegado.
 
-Termina con un ejemplo en el que el login sea correcto, pero el acceso a un recurso sea denegado.
+## Ejercicio 2. RBAC para un portal de incidencias
 
-### Entrega
-
-- Tabla `concepto / definición`.
-- Ejemplo de acceso denegado después de un login correcto.
-
-## Ejercicio 2. Modelo RBAC para un portal de incidencias
-
-El portal dispone de tres roles: `Reader`, `Operator` y `Admin`.
-
-Completa con **Sí** o **No**:
+Completa la matriz. Ningún rol puede borrar registros de forma habitual.
 
 | Acción | Reader | Operator | Admin |
 |---|---|---|---|
@@ -39,10 +18,4 @@ Completa con **Sí** o **No**:
 | Gestionar usuarios |  |  |  |
 | Borrar registros |  |  |  |
 
-Supuesto: borrar registros no forma parte de ninguno de los tres roles habituales.
-
-### Entrega
-
-- Matriz terminada.
-- Justificación de una restricción.
-- Una acción que deba quedar registrada en auditoría.
+**Entrega:** matriz, justificación de una restricción y una acción que auditarías.

@@ -1,42 +1,55 @@
 # Módulo 3. Google Cloud IAM
 
-## Ejercicio 1. Jerarquía y herencia
+Todos los ejercicios se realizan por terminal con una **service account ya proporcionada**. No se usa la consola web y no se crean cuentas de servicio ni claves.
 
-1. Identifica el proyecto de laboratorio.
-2. Si existen, localiza la organización y las carpetas que lo contienen.
-3. Revisa los principals y roles del proyecto.
-4. Distingue las concesiones directas de las heredadas.
+Preparación:
 
-### Entrega
+```bash
+export ACTIVE_ACCOUNT="$(gcloud auth list --filter=status:ACTIVE --format='value(account)')"
+export PROJECT_ID="$(gcloud config get-value project)"
+printf 'Cuenta: %s\nProyecto: %s\n' "$ACTIVE_ACCOUNT" "$PROJECT_ID"
+```
 
-- Diagrama `Organization / Folder / Project` adaptado al entorno real.
-- Tabla `principal / rol / nivel / directo o heredado`.
-- Explicación de una concesión heredada y su alcance.
+## Ejercicio 1. Identidad, proyecto y permisos
 
-## Ejercicio 2. Tipos de roles
+Ejecuta:
 
-1. Localiza un rol básico, uno predefinido y uno personalizado, si existe.
-2. Compara su origen, granularidad y mantenimiento.
-3. Elige un rol para una persona que solo necesita consultar logs.
-4. Justifica por qué no usarías `Owner` ni `Editor`.
+```bash
+gcloud projects describe "$PROJECT_ID" --format='yaml(projectId,parent)'
+gcloud projects get-iam-policy "$PROJECT_ID" \
+  --flatten='bindings[].members' \
+  --filter="bindings.members:serviceAccount:$ACTIVE_ACCOUNT" \
+  --format='table(bindings.role)'
+```
 
-### Entrega
+**Entrega:** cuenta activa, proyecto, parent visible y roles concedidos a la service account. Si un comando devuelve `PERMISSION_DENIED`, incluye el error y explica qué permiso habría sido necesario para consultar esa información.
 
-- Tabla comparativa de los tres tipos de rol.
-- Rol recomendado para consultar logs y justificación.
+## Ejercicio 2. Roles de Google Cloud
 
-## Ejercicio 3. Service account segura
+Consulta un rol básico y el rol predefinido para leer logs:
 
-1. Crea o revisa la service account `iam-lab-workload`.
-2. Define qué workload la utilizaría.
-3. Asígnale el rol mínimo en el alcance más reducido posible.
-4. Comprueba si la creación de claves está permitida.
-5. Evita crear una clave persistente. Si el laboratorio exige crearla, elimínala al terminar.
-6. Localiza en auditoría la creación o modificación de la service account.
+```bash
+gcloud iam roles describe roles/viewer
+gcloud iam roles describe roles/logging.viewer
+```
 
-### Entrega
+Como ampliación, si tienes permiso:
 
-- Identificador y propósito de la service account.
-- Rol y alcance concedidos.
-- Decisión sobre claves y alternativa propuesta.
-- Evidencia de auditoría localizada.
+```bash
+gcloud iam roles list --project="$PROJECT_ID"
+```
+
+**Entrega:** tabla breve `rol / tipo / uso` y elección justificada para un operador que solo necesita consultar logs.
+
+## Ejercicio 3. Auditoría de la service account
+
+Busca actividad de la cuenta activa:
+
+```bash
+gcloud logging read \
+  "protoPayload.authenticationInfo.principalEmail=\"$ACTIVE_ACCOUNT\"" \
+  --project="$PROJECT_ID" --limit=10 \
+  --format='table(timestamp,protoPayload.methodName,resource.type)'
+```
+
+**Entrega:** tres operaciones observadas, o el error de permisos obtenido, y una explicación de por qué no se deben descargar claves persistentes para esta práctica.
