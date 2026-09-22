@@ -1,29 +1,26 @@
-# Ejercicios del curso Azure y Google Cloud IAM
+# Laboratorios IAM: Microsoft Entra ID y Google Cloud
 
-Este repositorio contiene los ejercicios prácticos del curso, organizados por módulo.
+Ejercicios prácticos sobre identidades, autorización y federación entre Microsoft Entra ID y Google Cloud.
 
-## Módulos
+## Ejercicios
 
-1. [Fundamentos de IAM](ejercicios/01-fundamentos-iam.md)
-2. [Azure y Microsoft Entra ID](ejercicios/02-azure-entra-id.md)
-3. [Google Cloud IAM](ejercicios/03-google-cloud-iam.md)
-4. [Federación de identidades y SSO](ejercicios/04-federacion-sso.md)
-5. [Gobierno IAM multicloud](ejercicios/05-gobierno-multicloud.md)
+1. [Usuarios y grupos en Entra ID](ejercicios/01-Ejercicio-Entra-usuarios-y-grupos-UI.md)
+2. [Permisos federados en Google Cloud](ejercicios/02-Ejercicio-GCP-permisos-federados-UI.md)
+3. [Acceso a Google Cloud con Entra ID](ejercicios/03-Demostracion-login-GCP-con-Entra-ID.md)
+4. [Service account y custom role](ejercicios/04-Ejercicio-service-account-y-custom-role-UI.md)
+5. [Custom role con Terraform](ejercicios/05-Demo-Terraform-custom-role.md)
+6. [Login cross-cloud de una aplicación Python](ejercicios/06-Ejercicio-login-cross-cloud-aplicacion.md)
 
-## Convención de nombres en el tenant compartido
+## Código incluido
 
-Cada alumno recibe un identificador `UXX`, por ejemplo `U01`, `U02` o `U15`. Sustituye `UXX` por el tuyo en todos los objetos que crees:
+- `app/`: aplicación Python del ejercicio 6.
+- `terraform-custom-role/`: ejemplo de custom role de Google Cloud con Terraform.
 
-- Usuarios: `UXX-IAM-User-1` y `UXX-IAM-User-2`.
-- Grupos: `UXX-iam-lab-readers` y `UXX-iam-lab-ca-test`.
-- Aplicación: `UXX-iam-lab-app`.
-- Política: `UXX-require-mfa-lab`.
+## Requisitos
 
-Modifica o elimina únicamente objetos que lleven tu identificador.
+- Acceso al tenant de Microsoft Entra ID del laboratorio.
+- Acceso federado al proyecto de Google Cloud.
+- Python 3.10 o posterior.
+- Terraform para el ejercicio 5.
 
-## Entorno de laboratorio
-
-- Usa únicamente cuentas y recursos de laboratorio.
-- No actives políticas que puedan bloquear a los administradores.
-- No conserves secretos ni claves descargadas al terminar.
-- Documenta cualquier paso que no puedas ejecutar por falta de licencia o permisos.
+No se utilizan claves JSON de service accounts. No guardes secretos, tokens ni archivos de credenciales en este repositorio.

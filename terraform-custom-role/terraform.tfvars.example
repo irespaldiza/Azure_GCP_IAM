@@ -1,0 +1,3 @@
+project_id            = "mi-proyecto-laboratorio"
+prefix                = "alumno01"
+service_account_email = "alumno01-python-workload@mi-proyecto-laboratorio.iam.gserviceaccount.com"
